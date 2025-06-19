@@ -2,30 +2,51 @@
  * @param {number[]} nums
  * @return {number}
  */
-var longestConsecutive = function(nums) {
-    if (nums.length === 0) return 0;
-    
-    const numSet = new Set(nums);
-    const cnts = [];
+var longestConsecutive = (nums) => {
+  if (nums.length === 0) return 0;
 
-    for (const num of numSet.values()) {
-        if (!numSet.has(num - 1)) {
-            let cnt = 1;
-            let i = 1;
+  const numSet = new Set(nums);
+  const lengs = [];
 
-            while (numSet.has(num + i)) {
-                cnt++;
-                i++;
-            }
+  for (const num of numSet) {
+    if (!numSet.has(num - 1)) {
+      let i = 1;
+      
+      while (numSet.has(num + i)) {
+        i++;
+      }
 
-            cnts.push(cnt);
-        } else {
-            continue;
-        }
+      lengs.push(i);
     }
+  }
 
-    return Math.max(...cnts);
+  return Math.max(...lengs);
 }
+
+// var longestConsecutive = function(nums) {
+//     if (nums.length === 0) return 0;
+
+//     const numSet = new Set(nums);
+//     const cnts = [];
+
+//     for (const num of numSet) {
+//         if (!numSet.has(num - 1)) {
+//             let cnt = 1;
+//             let i = 1;
+
+//             while (numSet.has(num + i)) {
+//                 cnt++;
+//                 i++;
+//             }
+
+//             cnts.push(cnt);
+//         } else {
+//             continue;
+//         }
+//     }
+
+//     return Math.max(...cnts);
+// }
 
 // nlog n 해결 방식(sort 메서드가 nlog n이므로)
 // var longestConsecutive = function(nums) {
