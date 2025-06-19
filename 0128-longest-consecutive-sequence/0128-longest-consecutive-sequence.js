@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+// 복습, 구문 개선 방식
 var longestConsecutive = (nums) => {
   if (nums.length === 0) return 0;
 
@@ -23,6 +24,7 @@ var longestConsecutive = (nums) => {
   return Math.max(...lengs);
 }
 
+// O(N)으로 처음 푼 방식
 // var longestConsecutive = function(nums) {
 //     if (nums.length === 0) return 0;
 
@@ -48,7 +50,7 @@ var longestConsecutive = (nums) => {
 //     return Math.max(...cnts);
 // }
 
-// nlog n 해결 방식(sort 메서드가 nlog n이므로)
+// nlog n 해결 방식(sort 메서드가 nlog n이므로, 최적화 적용 안된 버전)
 // var longestConsecutive = function(nums) {
 //     if (nums.length === 0) {
 //         return 0;
