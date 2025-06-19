@@ -16,8 +16,6 @@ var isPalindrome = function(s) {
 
     const originS = validS.join('');
     const reversedS = validS.reverse().join('');
-    console.log(originS);
-    console.log(reversedS);
     
     if (originS === reversedS) return true;
 
