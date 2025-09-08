@@ -3,10 +3,10 @@
  * @param {number[]} nums
  */
 var KthLargest = function(k, nums) {
-    this.scores = new Heap((a, b) => a - b);
+    this.scores = new Heap((a, b) => a - b); // 최소 힙
     this.k = k;
 
-    for (const x of nums) this.add(x);
+    for (const x of nums) this.add(x); // 힙에 요소들 넣기
 };
 
 /** 
@@ -15,12 +15,14 @@ var KthLargest = function(k, nums) {
  */
 KthLargest.prototype.add = function(val) {
     if (this.scores.size() < this.k) {
+        // 아직 힙에 k개가 안찼으면, 힙에 요소를 추가한다.
         this.scores.push(val);
     } else if (val > this.scores.top()) {
-        this.scores.push(val);
-        this.scores.pop();
+        // 최소 힙의 루트(현재까지 가장 작은, k번째에 있는 값)가 새로 들어오려는 값보다 작으면, 새로운 값으로 최솟값을 교체한다.
+        this.scores.push(val); // 새로운 값을 힙에 추가한다. 이 값이 이제 루트(힙의 최솟값)가 된다.
+        this.scores.pop(); // 힙의 루트 값(최솟값)을 제거한다.
     }
-    return this.scores.top();
+    return this.scores.top(); // 힙의 루트 값(최솟값)을 반환한다. k개를 한정해서 힙을 구성하기 때문에, k번째로 큰 값이 반환된다. 
 };
 
 /** 
